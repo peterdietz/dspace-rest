@@ -1,0 +1,3 @@
+mvn clean package
+Deploy /target/rest.war to tomcat.
+open http://localhost:8080/hello/world
