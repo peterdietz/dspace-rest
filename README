@@ -1,3 +1,10 @@
+A RESTful web services API for DSpace.
+
+Built on JERSEY
+
 mvn clean package
 Deploy /target/rest.war to tomcat.
-open http://localhost:8080/hello/world
+
+Endpoints:
+- http://localhost:8080/dspace-rest/collections
+- http://localhost:8080/dspace-rest/communities
