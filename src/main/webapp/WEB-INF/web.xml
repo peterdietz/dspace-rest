@@ -16,6 +16,10 @@
             <param-name>com.sun.jersey.config.property.packages</param-name>
             <param-value>org.dspace.rest</param-value>
         </init-param>
+        <init-param>
+            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+            <param-value>true</param-value>
+        </init-param>
         <!--
         Load the ServletContainer at startup.  A value of 1 indicates the ServletContainer
         is a high priority servlet to load
