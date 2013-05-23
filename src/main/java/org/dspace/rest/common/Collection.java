@@ -41,6 +41,8 @@ public class Collection {
     //Calculated
     private Integer numberItems;
 
+    private static Context context;
+
     public Collection(){}
 
     public Collection(org.dspace.content.Collection collection, String expand) {
@@ -49,7 +51,10 @@ public class Collection {
 
     public Collection(Integer collectionID, String expand) {
         try {
-            Context context = new Context();
+            if(context == null || !context.isValid() ) {
+                context = new Context();
+            }
+
             org.dspace.content.Collection collection = org.dspace.content.Collection.find(context, collectionID);
             setup(collection, expand);
 

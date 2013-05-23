@@ -19,6 +19,8 @@ http://localhost:8080/<webapp>/collections
 public class CollectionsResource {
     final String collectionsPath = "/dspace-rest/collections/";
 
+    private static Context context;
+
     /*
     The "GET" annotation indicates this method will respond to HTTP Get requests.
     The "Produces" annotation indicates the MIME response the method will return.
@@ -48,7 +50,9 @@ public class CollectionsResource {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public org.dspace.rest.common.Collection[] list(@QueryParam("expand") String expand) {
         try {
-            Context context = new Context();
+            if(context == null || !context.isValid() ) {
+                context = new Context();
+            }
 
             Collection[] collections = Collection.findAll(context);
             ArrayList<org.dspace.rest.common.Collection> collectionArrayList = new ArrayList<org.dspace.rest.common.Collection>();

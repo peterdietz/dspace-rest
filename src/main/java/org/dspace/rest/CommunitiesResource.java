@@ -18,6 +18,7 @@ http://localhost:8080/<webapp>/communities
  */
 @Path("/communities")
 public class CommunitiesResource {
+    private static Context context;
 
     /*
     The "GET" annotation indicates this method will respond to HTTP Get requests.
@@ -28,7 +29,9 @@ public class CommunitiesResource {
     public String list() {
         StringBuilder everything = new StringBuilder();
         try {
-            Context context = new Context();
+            if(context == null || !context.isValid() ) {
+                context = new Context();
+            }
             Community[] communities = Community.findAllTop(context);
             for(Community community : communities) {
                 everything.append(community.getName() + "<br/>\n");
